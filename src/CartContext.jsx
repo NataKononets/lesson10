@@ -8,6 +8,13 @@ export function CartProvider({ children }) {
   function addToCart(product) {
     setCartItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
+      const currentQty = existing ? existing.quantity : 0;
+      const stock = product.stock ?? Infinity;
+
+      if (currentQty >= stock) {
+        alert("Немає більше в наявності цього товару");
+        return prev;
+      }
 
       if (existing) {
         return prev.map((item) =>
@@ -24,7 +31,6 @@ export function CartProvider({ children }) {
   function removeOne(productId) {
     setCartItems((prev) => {
       const item = prev.find((i) => i.id === productId);
-
       if (!item) return prev;
 
       if (item.quantity === 1) {
@@ -53,7 +59,6 @@ export function CartProvider({ children }) {
     </CartContext.Provider>
   );
 }
-
 
 export function useCart() {
   return useContext(CartContext);

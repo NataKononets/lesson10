@@ -6,12 +6,14 @@ const PRODUCTS = [
     title: "React T-shirt",
     price: 59,
     description: "Футболка для фронтендерів",
+    stock: 5,
    },
   {
     id: 2,
     title: "JS Mug",
     price: 39,
     description: "Чашка JavaScript",
+    stock: 5,
     
   },
   {
@@ -19,6 +21,7 @@ const PRODUCTS = [
     title: "Frontend Stickers",
     price: 19,
     description: "Наліпки для ноутбука",
+    stock: 5,
   },
 ];
 
